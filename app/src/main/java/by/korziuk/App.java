@@ -3,12 +3,23 @@
  */
 package by.korziuk;
 
+import by.korziuk.factory.BankFactory;
+import by.korziuk.factory.RemoteBankFactory;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
+
+    private static BankFactory bank;
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        init();
+        runner("Clever-bank");
+    }
+
+    static void init() {
+        bank = new RemoteBankFactory();
+    }
+
+    static void runner(String bankName) {
+        bank.createBank(bankName);
     }
 }
